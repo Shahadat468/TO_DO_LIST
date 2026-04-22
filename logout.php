@@ -2,6 +2,7 @@
 require_once "auth.php";
 
 // Clear the current session and start a fresh one for the logout message.
+clear_auth_cookie();
 session_unset();
 session_destroy();
 

@@ -25,6 +25,7 @@ mysqli_stmt_bind_param($stmt, "i", $user_id);
 mysqli_stmt_execute($stmt);
 
 if (mysqli_stmt_affected_rows($stmt) > 0) {
+    clear_auth_cookie();
     session_unset();
     session_destroy();
 
