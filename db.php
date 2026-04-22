@@ -13,8 +13,13 @@ $conn = mysqli_init();
 $ssl_flag = 0;
 
 if ($ssl_ca_text !== "") {
+    $ssl_ca_text = trim($ssl_ca_text);
+    $ssl_ca_text = str_replace(["\\r\\n", "\\n", "\\r"], "\n", $ssl_ca_text);
+    $ssl_ca_text = str_replace(["\r\n", "\r"], "\n", $ssl_ca_text);
+    $ssl_ca_text = rtrim($ssl_ca_text, "\n") . "\n";
+
     $ssl_ca_file = sys_get_temp_dir() . "/aiven-ca.pem";
-    file_put_contents($ssl_ca_file, $ssl_ca_text);
+    file_put_contents($ssl_ca_file, $ssl_ca_text, LOCK_EX);
     mysqli_ssl_set($conn, null, null, $ssl_ca_file, null, null);
     $ssl_flag = MYSQLI_CLIENT_SSL;
 }
