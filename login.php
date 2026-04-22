@@ -2,8 +2,6 @@
 require_once "auth.php";
 require_once "db.php";
 
-redirect_if_logged_in();
-
 $email = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {

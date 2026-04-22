@@ -105,6 +105,18 @@ function clear_auth_cookie()
     ]);
 }
 
+function clear_auth_state()
+{
+    clear_auth_cookie();
+
+    if (session_status() === PHP_SESSION_ACTIVE) {
+        session_unset();
+        session_destroy();
+    }
+
+    start_app_session();
+}
+
 function restore_auth_from_cookie()
 {
     if (isset($_SESSION["user_id"])) {
@@ -159,6 +171,7 @@ function is_logged_in()
 function require_login()
 {
     if (!is_logged_in()) {
+        clear_auth_state();
         $_SESSION["error"] = "Please log in first.";
         header("Location: login.php");
         exit();
