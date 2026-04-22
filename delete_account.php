@@ -28,7 +28,7 @@ if (mysqli_stmt_affected_rows($stmt) > 0) {
     session_unset();
     session_destroy();
 
-    session_start();
+    start_app_session();
     $_SESSION["success"] = "Your account and tasks were deleted successfully.";
     header("Location: login.php");
     exit();

@@ -5,7 +5,7 @@ require_once "auth.php";
 session_unset();
 session_destroy();
 
-session_start();
+start_app_session();
 $_SESSION["success"] = "You have logged out successfully.";
 
 header("Location: login.php");
