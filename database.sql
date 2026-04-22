@@ -1,11 +1,7 @@
 -- Multi-User To-Do List CRUD System
 -- Import this file in phpMyAdmin or run it in MySQL.
 
-CREATE DATABASE IF NOT EXISTS todo_multiuser_system
-CHARACTER SET utf8mb4
-COLLATE utf8mb4_general_ci;
-
-USE todo_multiuser_system;
+USE defaultdb;
 
 -- Drop old tables first so the setup can be run again safely.
 SET FOREIGN_KEY_CHECKS = 0;
